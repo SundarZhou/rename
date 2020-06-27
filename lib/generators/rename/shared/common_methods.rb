@@ -57,6 +57,9 @@ module CommonMethods
       replace_into_file('config/initializers/session_store.rb', /(('|")_.*_session('|"))/i, "'_#{@new_key}_session'")
       #Rename database
       replace_into_file('config/database.yml', /#{@old_module_name.underscore}/i, @new_name.underscore)
+      replace_into_file('config/database.yml.sample', /#{@old_module_name.underscore}/i, @new_name.underscore)
+      #Rename package
+      replace_into_file('package.json', /#{@old_module_name.underscore}/i, @new_name.underscore)
     end
   end
 
